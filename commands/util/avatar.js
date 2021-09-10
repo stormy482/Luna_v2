@@ -4,6 +4,16 @@
 const { MessageEmbed } = require("discord.js");
 
 const { SlashCommandBuilder } = require('@discordjs/builders');
+/*
+module.exports = {
+    const data = new SlashCommandBuilder()
+            .setName("avatar")
+            .setDescription("Returns the profile picture of a mentioned user.")
+            
+}*/
+
+
+
 
 // –––––– Parameters –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 
@@ -16,20 +26,33 @@ module.exports = {
     guildOnly   : true,
     privileges  : ["SEND_MESSAGES"],
     usage       : "avatar",
+    options     : [
+            {
+                "type": 6,
+                "name": "user",
+                "description": "Mention a user"
+        }
+    ],
     
-    async execute(interaction) {
-        //interaction.reply({ content: 'Pong u motherfucker' })
+    async execute(client, interaction, args, type) {
 
-        const ReqUser = interaction.member.user,
+        var IsPing;
+        try {
+            IsPing = (type ? interaction.options.getUser("user") : interaction.mentions.members.first().user);
+        } catch (error) {
+            IsPing = null;
+        }
 
-        embed = new MessageEmbed()
-                    .setColor("#36393f")
-                    .setAuthor(ReqUser.username)
-                    .setImage(ReqUser.displayAvatarURL({
-                        format  : "png",
-                        dynamic : "true",
-                        size    : 1024
-                    }));
+        const ReqUser = (IsPing ? IsPing : client.users.cache.find((x) => x.username === args[0]) || interaction.member.user),
+        //const ReqUser = interaction.options.getUser("user"),
+
+            embed = new MessageEmbed()
+                        .setColor("#36393f")
+                        .setAuthor(ReqUser.username)
+                        .setImage(ReqUser.displayAvatarURL({
+                            dynamic : "true",
+                            size    : 1024
+                        }));
 
         interaction.reply({ embeds: [ embed ] });
 

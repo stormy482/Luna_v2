@@ -108,9 +108,10 @@ const rest = new REST({ version: '9' }).setToken(settings.Token);
 client.on('interactionCreate', async interaction => {
     if (!interaction.isCommand()) return;
     const command = client.commands.get(interaction.commandName);
+    const type = 1;
     if (!command) return;
     try {
-        await command.execute(interaction);
+        await command.execute(client, interaction, args = [], type);
     } catch (error) {
         if (error) console.error(error);
         await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
@@ -124,9 +125,10 @@ client.on('messageCreate', async message => {
     const args      = message.content.slice(settings.Prefix.length).split(/ +/),
           Ncommand   = args.shift().toLowerCase(),
           command   = client.commands.get(Ncommand) || client.commands.find((cmd) => cmd.aliases && cmd.aliases.includes(Ncommand));
+          type = 0;
 
     try {
-        await command.execute(message);
+        await command.execute(client, message, args, type);
     } catch (error) {
         if (error) console.error(error);
         await message.reply({ content: 'There was an error while executing this command!', ephemeral: true });
