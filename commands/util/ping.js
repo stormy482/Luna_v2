@@ -18,7 +18,7 @@ module.exports = {
 
 // –––––– Execution ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 
-    async execute(interaction) {
+    async execute(client, interaction, args, type) {
 
         const Lat = new Date().getTime() - interaction.createdTimestamp;
         var embed = new MessageEmbed();
