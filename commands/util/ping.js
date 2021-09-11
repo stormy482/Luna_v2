@@ -1,7 +1,7 @@
 // ██████ Integrations █████████████████████████████████████████████████████████
 
 // A powerful library for interacting with the Discord API
-const { MessageEmbed } = require("discord.js");
+const { Client, Integration, MessageEmbed } = require("discord.js");
 // A light-weight module that brings Fetch API to Node.js
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 
@@ -18,6 +18,12 @@ module.exports = {
 
 // –––––– Execution ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 
+    /**
+     * @param {Client} cleint 
+     * @param {Integration} interaction 
+     * @param {*} args 
+     * @param {*} type 
+     */
     async execute(client, interaction, args, type) {
 
         const Lat = new Date().getTime() - interaction.createdTimestamp;

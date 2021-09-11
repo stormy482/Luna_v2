@@ -1,4 +1,6 @@
-const { Client, Interaction, MessageEmbed } = require("discord.js");
+// this will be the file that allows for "alexa like" voice commands
+const { Client, Integration, MessageEmbed } = require("discord.js");
+
 
 module.exports = {
 
@@ -13,11 +15,12 @@ module.exports = {
     
     /**
      * @param {Client} cleint 
-     * @param {Interaction} interaction 
+     * @param {Integration} interaction 
      * @param {*} args 
-     * @param {*} type 
+     * @param {*} type
      */
     async execute(cleint, interaction, args, type) {
         // runs on execution
     }
-};
+}
+

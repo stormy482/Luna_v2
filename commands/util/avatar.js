@@ -1,7 +1,7 @@
 // ██████ Integrations █████████████████████████████████████████████████████████
 
 // A powerful library for interacting with the Discord API
-const { MessageEmbed } = require("discord.js");
+const { Client, Interaction, MessageEmbed } = require("discord.js");
 
 const { SlashCommandBuilder } = require('@discordjs/builders');
 /*
@@ -34,8 +34,13 @@ module.exports = {
         }
     ],
     
+    /**
+     * @param {Client} cleint 
+     * @param {Interaction} interaction 
+     * @param {*} args 
+     * @param {*} type 
+     */
     async execute(client, interaction, args, type) {
-
         var IsPing;
         try {
             IsPing = (type ? interaction.options.getUser("user") : interaction.mentions.members.first().user);
