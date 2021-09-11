@@ -1,4 +1,5 @@
-const { Client, Integration, MessageEmbed } = require("discord.js");
+const { Client, Interaction, MessageEmbed } = require("discord.js");
+const Discord = require("discord.js");
 
 const { SlashCommandBuilder } = require('@discordjs/builders');
 
@@ -14,15 +15,24 @@ module.exports = {
     guildOnly   : true,
     privileges  : ["SEND_MESSAGES", "CONNECT", "SPEAK"],
     usage       : "cmd",
-    options     : [],
-    
+    options     : [
+            {
+                "type": 3,
+                "name": "music",
+                "description": "What musik does thee want to play?",
+                "required": true,
+            }
+    ],
+
     /**
-     * @param {Client} cleint 
-     * @param {Integration} interaction 
+     * 
+     * @param {Client} client 
+     * @param {Interaction} interaction 
      * @param {*} args 
      * @param {*} type 
      */
-    async execute(cleint, interaction, args, type) {
+    async execute(client, interaction, args, type) {
         // runs on execution
     }
-}
+
+};
