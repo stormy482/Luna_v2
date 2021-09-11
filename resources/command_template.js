@@ -7,8 +7,9 @@ module.exports = {
     guildOnly   : true,
     privileges  : ["SEND_MESSAGES"],
     usage       : "cmd",
+    options     : [],
     
-    async execute(interaction) {
+    async execute(cleint, interaction, args, type) {
         // runs on execution
     }
 };
