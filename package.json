@@ -18,15 +18,25 @@
   "homepage": "https://github.com/Vio-Eli/Luna_v2#readme",
   "dependencies": {
     "@discordjs/builders": "^0.6.0",
+    "@discordjs/opus": "^0.5.3",
     "@discordjs/rest": "^0.1.0-canary.0",
     "@discordjs/voice": "^0.6.0",
+    "@google-cloud/speech": "^4.8.1",
     "@sapphire/snowflake": "^2.0.0",
     "chalk": "^4.1.2",
     "discord-api-types": "^0.23.1",
     "discord.js": "^13.1.0",
+    "ffi-napi": "^4.0.3",
+    "ffmpeg": "^0.0.4",
     "gradient-string": "^1.2.0",
+    "libsodium-wrappers": "^0.7.9",
+    "mic": "^2.1.2",
     "moment": "^2.29.1",
     "node-fetch": "^3.0.0",
-    "prompts": "^2.4.1"
+    "node-gyp": "^8.2.0",
+    "opusscript": "^0.0.8",
+    "prism-media": "^1.3.2",
+    "prompts": "^2.4.1",
+    "pythonia": "^0.2.12"
   }
 }
