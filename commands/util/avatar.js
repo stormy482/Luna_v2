@@ -8,6 +8,7 @@ const { Client, Interaction, MessageEmbed } = require("discord.js");
 module.exports = {
 
     name        : "avatar",
+    category    : "Utility",
     description : "Returns the profile picture of a mentioned user.",
     cooldown    : 3,
     aliases     : ["pp"],

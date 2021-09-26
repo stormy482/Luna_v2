@@ -1,0 +1,30 @@
+NAME
+    help - shows a help menu
+
+SYNOPSIS
+    help
+
+DESCRIPTION
+    Displays a menu style help directory, where you can fully navigate the manuals of each command via directories
+
+OPTIONS
+    None
+
+FILES
+    ./commands/util/help.js
+
+ENVIRONMENT
+    Prefix
+        gets prefix from ./settings.json (soon to be a .env or from a guild)
+
+DIAGNOSTICS
+    TODO
+
+BUGS
+    If .txt file is not found for a command, may throw error
+
+AUTHOR
+    Vio
+
+SEE ALSO
+    man

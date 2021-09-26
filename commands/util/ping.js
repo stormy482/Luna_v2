@@ -9,12 +9,13 @@ const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch
 
 module.exports = {
 
-    name            : "ping",
-    description     : "Sends test packets to the bot, and measures the response time.",
-    cooldown        : 5,
-    aliases         : ["🏓", "pong"],
-    guildOnly       : false,
-    privileges      : ["SEND_MESSAGES"],
+    name        : "ping",
+    category    : "Utility",
+    description : "Sends test packets to the bot, and measures the response time.",
+    cooldown    : 5,
+    aliases     : ["🏓", "pong"],
+    guildOnly   : false,
+    privileges  : ["SEND_MESSAGES"],
 
 // –––––– Execution ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 

@@ -29,7 +29,7 @@ const {Client, Intents}   = require("discord.js"),
 // Terminal string styling done right
     chalk       = require("chalk");
 // Creating our discord client
-const client    = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_VOICE_STATES,Intents.FLAGS.GUILD_MESSAGE_REACTIONS] }),
+const client    = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_VOICE_STATES, Intents.FLAGS.GUILD_MESSAGE_REACTIONS, Intents.FLAGS.DIRECT_MESSAGE_TYPING, Intents.FLAGS.GUILD_EMOJIS_AND_STICKERS] }),
     active      = new Map(),
     cooldowns   = new Discord.Collection(),
     Glossary      = new (require(`./resources/English.js`))();
