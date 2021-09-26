@@ -5,6 +5,7 @@ const { Client, Integration, MessageEmbed } = require("discord.js");
 module.exports = {
 
     name        : "name",
+    category    : "Sound",
     description : "description",
     cooldown    : 1,
     aliases     : ["alias"],

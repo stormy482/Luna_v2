@@ -18,6 +18,7 @@ const googleSpeechClient = new googleSpeech.SpeechClient()
 module.exports = {
 
     name        : "join",
+    category    : "Sound",
     description : "make the bot join the god damn voice channel",
     cooldown    : 1,
     aliases     : ["j"],
