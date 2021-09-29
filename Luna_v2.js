@@ -10,14 +10,34 @@
 
     T͋̓͝hé̿͝ b̐̾͠e̽̓͘t͌̾̾t̿͊͘e̿̔͋r͆͋͘ é̐͐d̾͒i̔͒͋t̓̿͠io̽́̓n̾̈́̀.̿̐͛.͒̚.̓͆͑ w̔͐͠i̓̚t́̈́͝h͛͋͝ s͊o̓͑͋m̈́̽̚e͋͌̚ l̐̈́̀i̐͌̈́b͋̐͛é̾͌r͋͋̐a͆͒l̈́̐ h̓͋̽e̓͋͛l̈́̐͊p̔͒͑ f̀̔͝r͛͆ó͝m̓̚ m͋͑͠ÿ́͌̾ w̐͌a̽͛͝i̔͒̐f͆̈́͌u͛͒̓... E͒̈́͘r͊͋i̽͝i͌̒̾-̈́͆̐c͑̔̿h͒̈́̕a͒͆͝n̔̓͝!́͘͝
 
-    ██████ SANITY check ████████████████████████████████████████████████████████ */
+/* ████████ SANITY check ███████████████████████████████████████████████████████ */
 
 
 // Our BASE File systems
 const fs        = require("fs");
 const path      = require("path");
 const {join}    = require("path");
-var settings;
+var settings;                                 //\\ TEMP: should this b var? \\//
+
+
+// ██████ MySQL Database ███████████████████████████████████████████████████████
+// MySQL...
+let mysql = require("mysql");
+// Create connection to our database: lunabase
+// TODO: replace params with real connection params
+let connection = mysql.createConnection({
+    host : "localhost",
+    user : "me",
+    password : "password",
+    database : "lunabase"
+});
+
+// Connect to lunabase
+connection.connect((error) => {
+    if (error) return console.error("connection initiation error: " + error.message);
+    // Connection established successfully
+    console.log("connected to " + connection.config.database + "as " + connection.threadId + "successfully");
+});
 
 
 // ██████ Our Integrations █████████████████████████████████████████████████████
@@ -40,7 +60,7 @@ const { Routes }= require('discord-api-types/v9');
 
 
 // ██████ Initialization ███████████████████████████████████████████████████████
-    
+
 function setup() {
     require("child_process").execSync("node setup.js", {
         stdio: [0, 1, 2]
@@ -59,11 +79,13 @@ if (fs.existsSync("./settings.json")) {
 
 // ██████ Discord Client Init ██████████████████████████████████████████████████
 
+// Adding Lunabase
+client.lunabase = connection;
 // Getting Custom Functions
 client.func     = require("./resources/custom_func.js");
 // Commands Collection
 client.commands = new Discord.Collection();
-// Some useful functions...
+// Some Useful Functions...
 client.timestamp= chalk.grey(moment().format("MM/DD HH:mm:ss"));
 
 client.error    = (err) => {
@@ -87,7 +109,7 @@ fs.readdirSync("./commands").forEach((dir) => {
     });
 });
 
-// Slash commands
+// Slash Commands
 const rest = new REST({ version: '9' }).setToken(settings.Token);
 
 (async () => {
@@ -118,7 +140,7 @@ client.on('interactionCreate', async interaction => {
     }
 });
 
-// Normal text commands
+// Normal Text Commands
 client.on('messageCreate', async message => {
     if (!message.content.startsWith(settings.Prefix)) return;
 

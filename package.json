@@ -33,6 +33,7 @@
     "libsodium-wrappers": "^0.7.9",
     "mic": "^2.1.2",
     "moment": "^2.29.1",
+    "mysql": "^2.18.1",
     "node-fetch": "^3.0.0",
     "node-gyp": "^8.2.0",
     "opusscript": "^0.0.8",
